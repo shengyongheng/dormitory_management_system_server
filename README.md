@@ -4,5 +4,6 @@
 ## 学生管理
 ![image](https://github.com/user-attachments/assets/f349f712-e901-49da-ab2e-31448a919d0b)
 ## 宿舍楼管理
-![Uploading image.png…]()
+![image](https://github.com/user-attachments/assets/e83581ed-f661-4429-920a-20790762255b)
+
 
