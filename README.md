@@ -45,5 +45,60 @@ jsp的实质是servlet，而servlet是后端的技术，那么jsp应该属于后
 ## 项目分层
 ![image](https://github.com/user-attachments/assets/75bc9bdd-0e9e-4203-8b02-79cfc96f9a7a)
 ## 数据库设计
+```
+-- 用户表
+CREATE TABLE `user`(
+	`id` int NOT NULL AUTO_INCREMENT,
+    `name` varchar(20) NOT NULL,
+    `password` varchar(20) NOT NULL,
+    `stuCode` varchar(20) DEFAULT NULL COMMENT '学号',
+	`dormCode` varchar(20) DEFAULT NULL COMMENT '宿舍编号',
+    `sex` varchar(10) DEFAULT NULL,
+	`tel` varchar(15) DEFAULT NULL,
+    `dormBuildId` int DEFAULT NULL COMMENT '宿舍楼ID',
+    `role` int DEFAULT NULL COMMENT '超级管理员 0；宿舍管理员1；学生2',
+    `createUserId` int DEFAULT NULL COMMENT '创建人ID',
+    `disabled` int DEFAULT '0',
+    PRIMARY KEY (`id`),
+    UNIQUE KEY `stuCode` (`stuCode`),
+    KEY `dormBuildId` (`dormBuildId`),
+    KEY `createUserId` (`createUserId`),
+    CONSTRAINT `fk_createUserId` FOREIGN KEY (`createUserId`) REFERENCES `user` (`id`),
+    CONSTRAINT `fk_dormBuildId` FOREIGN KEY (`dormBuildId`) REFERENCES `dorm_build` (`id`)
+);
 
+-- 宿舍楼表
+CREATE TABLE `dorm_build`(
+	`id` int NOT NULL AUTO_INCREMENT,
+    `name` varchar(20) DEFAULT NULL,
+    `remark` varchar(255) DEFAULT NULL,
+    `disabled` int DEFAULT "0", 
+    PRIMARY KEY (`id`),
+    UNIQUE KEY `name` (`name`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
+-- 一般都是逻辑删除，通过一个字段的值去判断该行数据是否已经被删除
 
+-- 宿舍楼和宿舍管理员的中间表
+-- 一个管理员可以管理多个宿舍楼，一个宿舍楼可以被多个人管理，多对多关系
+CREATE TABLE `manage_dormbuid`(
+	`id` int NOT NULL AUTO_INCREMENT,
+    `userId` int DEFAULT NULL,
+    `dormBuildId` int DEFAULT NULL,
+    PRIMARY KEY (`id`),
+    KEY `userId` (`userId`),
+    key `dormBuildId` (`dormBuildId`),
+    CONSTRAINT `userId` FOREIGN KEY (`userId`) REFERENCES `user` (`id`),
+    CONSTRAINT `dormBuildId` FOREIGN KEY (`dormBuildId`) REFERENCES `dorm_build` (`id`)
+);
+-- 缺勤表
+CREATE TABLE `absence`(
+	`id` int(11) NOT NULL AUTO_INCREMENT,
+	`studentId` int(11) DEFAULT NULL COMMENT '学生id',
+	`date` date DEFAULT NULL COMMENT '缺勤时间',
+	`remark` varchar(50) DEFAULT NULL COMMENT '备注',
+	`disabled` int(11) DEFAULT NULL,
+	PRIMARY KEY (`id`),
+	KEY `studentId` (`studentId`),
+	CONSTRAINT `tb_record ibfk 1` FOREIGN KEY (`studentId`) REFERENCES `user` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+```sql
