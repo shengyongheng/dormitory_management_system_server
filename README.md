@@ -34,3 +34,11 @@
   7.2删除、激活
   7.3修改
   7.4根据缺勤时间、学生楼栋、学生姓名或性别或宿舍编号查询
+## 技术选型
+### 前端:html,css、jquery(is框架),bootstrap,Bootstrap中的datetimepicker插件
+### 后端:jsp、servlet(接入层)、jdbc
+### 数据库:mysql5.6
+### 服务器:tomcat8.0
+jsp的实质是servlet，而servlet是后端的技术，那么jsp应该属于后端
+前端:用户能够直观看到的内容都是前端做的，包括HTML、CSS,JavaScript等
+后端:用户不能直接看到的内容都是后端做的，jsp、Servlet(接入层)、jdbc等
