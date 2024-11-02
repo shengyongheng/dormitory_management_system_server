@@ -42,3 +42,7 @@
 jsp的实质是servlet，而servlet是后端的技术，那么jsp应该属于后端
 前端:用户能够直观看到的内容都是前端做的，包括HTML、CSS,JavaScript等
 后端:用户不能直接看到的内容都是后端做的，jsp、Servlet(接入层)、jdbc等
+## 项目分层
+![image](https://github.com/user-attachments/assets/75bc9bdd-0e9e-4203-8b02-79cfc96f9a7a)
+
+
