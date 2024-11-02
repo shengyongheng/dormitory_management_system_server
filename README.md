@@ -49,32 +49,32 @@ jsp的实质是servlet，而servlet是后端的技术，那么jsp应该属于后
 -- 用户表
 CREATE TABLE `user`(
 	`id` int NOT NULL AUTO_INCREMENT,
-    `name` varchar(20) NOT NULL,
-    `password` varchar(20) NOT NULL,
-    `stuCode` varchar(20) DEFAULT NULL COMMENT '学号',
+    	`name` varchar(20) NOT NULL,
+    	`password` varchar(20) NOT NULL,
+    	`stuCode` varchar(20) DEFAULT NULL COMMENT '学号',
 	`dormCode` varchar(20) DEFAULT NULL COMMENT '宿舍编号',
-    `sex` varchar(10) DEFAULT NULL,
+    	`sex` varchar(10) DEFAULT NULL,
 	`tel` varchar(15) DEFAULT NULL,
-    `dormBuildId` int DEFAULT NULL COMMENT '宿舍楼ID',
-    `role` int DEFAULT NULL COMMENT '超级管理员 0；宿舍管理员1；学生2',
-    `createUserId` int DEFAULT NULL COMMENT '创建人ID',
-    `disabled` int DEFAULT '0',
-    PRIMARY KEY (`id`),
-    UNIQUE KEY `stuCode` (`stuCode`),
-    KEY `dormBuildId` (`dormBuildId`),
-    KEY `createUserId` (`createUserId`),
-    CONSTRAINT `fk_createUserId` FOREIGN KEY (`createUserId`) REFERENCES `user` (`id`),
-    CONSTRAINT `fk_dormBuildId` FOREIGN KEY (`dormBuildId`) REFERENCES `dorm_build` (`id`)
+    	`dormBuildId` int DEFAULT NULL COMMENT '宿舍楼ID',
+    	`role` int DEFAULT NULL COMMENT '超级管理员 0；宿舍管理员1；学生2',
+    	`createUserId` int DEFAULT NULL COMMENT '创建人ID',
+    	`disabled` int DEFAULT '0',
+    	PRIMARY KEY (`id`),
+    	UNIQUE KEY `stuCode` (`stuCode`),
+    	KEY `dormBuildId` (`dormBuildId`),
+    	KEY `createUserId` (`createUserId`),
+    	CONSTRAINT `fk_createUserId` FOREIGN KEY (`createUserId`) REFERENCES `user` (`id`),
+    	CONSTRAINT `fk_dormBuildId` FOREIGN KEY (`dormBuildId`) REFERENCES `dorm_build` (`id`)
 );
 
 -- 宿舍楼表
 CREATE TABLE `dorm_build`(
 	`id` int NOT NULL AUTO_INCREMENT,
-    `name` varchar(20) DEFAULT NULL,
-    `remark` varchar(255) DEFAULT NULL,
-    `disabled` int DEFAULT "0", 
-    PRIMARY KEY (`id`),
-    UNIQUE KEY `name` (`name`)
+    	`name` varchar(20) DEFAULT NULL,
+    	`remark` varchar(255) DEFAULT NULL,
+    	`disabled` int DEFAULT "0", 
+    	PRIMARY KEY (`id`),
+    	UNIQUE KEY `name` (`name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 -- 一般都是逻辑删除，通过一个字段的值去判断该行数据是否已经被删除
 
@@ -82,13 +82,13 @@ CREATE TABLE `dorm_build`(
 -- 一个管理员可以管理多个宿舍楼，一个宿舍楼可以被多个人管理，多对多关系
 CREATE TABLE `manage_dormbuid`(
 	`id` int NOT NULL AUTO_INCREMENT,
-    `userId` int DEFAULT NULL,
-    `dormBuildId` int DEFAULT NULL,
-    PRIMARY KEY (`id`),
-    KEY `userId` (`userId`),
-    key `dormBuildId` (`dormBuildId`),
-    CONSTRAINT `userId` FOREIGN KEY (`userId`) REFERENCES `user` (`id`),
-    CONSTRAINT `dormBuildId` FOREIGN KEY (`dormBuildId`) REFERENCES `dorm_build` (`id`)
+    	`userId` int DEFAULT NULL,
+    	`dormBuildId` int DEFAULT NULL,
+    	PRIMARY KEY (`id`),
+    	KEY `userId` (`userId`),
+    	KEY `dormBuildId` (`dormBuildId`),
+    	CONSTRAINT `userId` FOREIGN KEY (`userId`) REFERENCES `user` (`id`),
+    	CONSTRAINT `dormBuildId` FOREIGN KEY (`dormBuildId`) REFERENCES `dorm_build` (`id`)
 );
 -- 缺勤表
 CREATE TABLE `absence`(
