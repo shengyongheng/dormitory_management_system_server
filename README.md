@@ -3,6 +3,8 @@
 针对人群：对于刚学习完servlet、JDBC、Mysql的实战项目。
 ### 宿舍管理员管理
 ![image](https://github.com/user-attachments/assets/c246ec4b-dcb9-4cfb-9d39-f36715fcddaf)
+#### 添加宿舍管理员
+![image](https://github.com/user-attachments/assets/2d8fd736-bc26-4992-9c79-1ac0c7e7a6da)
 ### 学生管理
 ![image](https://github.com/user-attachments/assets/f349f712-e901-49da-ab2e-31448a919d0b)
 #### 添加学生
