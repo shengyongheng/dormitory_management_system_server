@@ -84,7 +84,7 @@ CREATE TABLE `dorm_build`(
 
 -- 宿舍楼和宿舍管理员的中间表
 -- 一个管理员可以管理多个宿舍楼，一个宿舍楼可以被多个人管理，多对多关系
-CREATE TABLE `manage_dormbuid`(
+CREATE TABLE `manage_dormbuild`(
 	`id` int NOT NULL AUTO_INCREMENT,
     	`userId` int DEFAULT NULL,
     	`dormBuildId` int DEFAULT NULL,
